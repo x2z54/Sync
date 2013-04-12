@@ -1,0 +1,24 @@
+<h1>Users</h1>
+
+<hr>
+<table>
+  <tr>
+  	<th>ID</th>
+    <th>E-mail</th>
+    <th>Password</th>
+  </tr>
+ 
+  <% @user.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+      <td><%= user.password_digest %></td>
+       <td><%= link_to 'Destroy', { :action => :destroy, :id => user.id }, :method => :delete, :confirm => 'Are you sure?' %></td>
+    </tr>
+  <%end%>
+</table>
+<hr><br>
+<%= link_to "Go to start page", root_path %>
+
+
+

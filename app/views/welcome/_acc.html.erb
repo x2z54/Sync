@@ -1,0 +1,17 @@
+	<div class="span9" style="margin:auto">
+
+ 		<div class="nav-bar">
+        	<div class="nav-bar-inner">
+ 
+            	<span class="element">Sync. systems 2013</span>
+            		<ul class="menu" style="float:right">
+                        <li><%= link_to "Account", :controller => :users, :action => :show, :id => session[:user_id] %></li>
+                        <li class="divider"></li>
+                        <li><%= link_to "Log out", :controller => :sessions, :action => :destroy %></li>
+                        <li class="divider"></li>
+                		<li><a href=#>Contacts</a></li>
+                		<li class="divider"></li>
+                		<li><%= link_to "Download", :controller => :registration, :action => :download %></li>
+            		</ul>
+        </div>
+    	</div>
