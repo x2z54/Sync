@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   else
 	if user && user.authenticate(params[:password_digest])
 	session[:user_id] = user.id
-	redirect_to :controller => :users, :action => :show, :id => user.id
+	redirect_to :controller => :welcome
 	else
     raise ActionController::RoutingError.new('Not Found')
     #redirect_to :controller => :welcome
