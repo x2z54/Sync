@@ -20,7 +20,7 @@ class RegistrationController < ApplicationController
 	end
 
 	def download
-		send_file "/public/sync.py.zip", :type=>"application/zip"
+		send_file "#{RAILS_ROOT}/public/sync.py.zip", :type=>"application/zip"
 	end
 
 	def refreshDB
