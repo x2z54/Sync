@@ -12,6 +12,11 @@ class RegistrationController < ApplicationController
 	def create	
 		@user = User.new(params[:user])
 		if @user.save
+		Dir.mkdir "#{Rails.public_path}/Files/#{@user.email}"
+		@ftp = Net::FTP.new('pegas.beget.ru')
+        @ftp.passive = true
+        @ftp.login(user = "melnik5g_andrey", passwd="DENVER")
+        @ftp.mkdir "/files/#{@user.email}"
 		render "_good"
 		else
 		render "_error_messages"

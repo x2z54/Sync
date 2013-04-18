@@ -22,11 +22,11 @@ class UsersController < ApplicationController
         else
     	@user = User.find(session[:user_id])
     	@email = @user[:email]
-        ftp = Net::FTP.new('pegas.beget.ru')
-        ftp.passive = true
-        ftp.login(user = "melnik5g_andrey", passwd="DENVER")
-    	ftp.chdir "/files/#{@email}"
-		@files = ftp.nlst('*')
+        @ftp = Net::FTP.new('pegas.beget.ru')
+        @ftp.passive = true
+        @ftp.login(user = "melnik5g_andrey", passwd="DENVER")
+    	@ftp.chdir "/files/#{@email}"
+		@files = @ftp.nlst('*')
         end
     end
 

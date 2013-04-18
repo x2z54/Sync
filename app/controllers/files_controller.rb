@@ -36,11 +36,8 @@ class FilesController < ApplicationController
     def download_file
         @user = User.find(session[:user_id])
         @email = @user[:email]
-        if connect
-            @ftp.chdir "/files/#{@email}"
             filename = params[:name]
-            File.open("#{ENV['HOME']}/Загрузки/#{params[:name]}" ,'wb'){|f|f.write(open("ftp://melnik5g_andrey:DENVER@pegas.beget.ru/files/#{@email}/#{params[:name]}").read)}
-            redirect_to(:back)
-        end
+            File.open("#{Rails.public_path}/Files/#{@email}/#{params[:name]}" ,'wb') {|f|f.write(open("ftp://melnik5g_andrey:DENVER@pegas.beget.ru/files/#{@email}/#{params[:name]}").read)}
+            send_file("#{Rails.public_path}/Files/#{@email}/#{params[:name]}")
     end
 end
