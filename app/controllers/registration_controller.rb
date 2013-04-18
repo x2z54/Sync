@@ -10,7 +10,6 @@ class RegistrationController < ApplicationController
 	end
 
 	def create	
-		path = Pathname.new("/home/andrew/Dropbox/Rails/site/public/files/")
 		@user = User.new(params[:user])
 		if @user.save
 		render "_good"

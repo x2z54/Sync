@@ -1,9 +1,9 @@
 require 'net/ftp'
 
-BD_PATH = "/home/andrew/Dropbox/Rails/site/db/development.sqlite3"
+
 
 class UsersController < ApplicationController
-	http_basic_authenticate_with :name => "root", :password => "secret", :except => [:new, :show, :edit, :create]
+	http_basic_authenticate_with :name => "root", :password => "secret", :except => [:new, :show, :edit, :create, :delete_file]
 	def index
 		@user = User.all
 	end
@@ -22,19 +22,23 @@ class UsersController < ApplicationController
         else
     	@user = User.find(session[:user_id])
     	@email = @user[:email]
-    	Dir.chdir "/home/andrew/Dropbox/Rails/site/public/files/#{@email}"
-		@files = Dir.glob('*')
+        ftp = Net::FTP.new('pegas.beget.ru')
+        ftp.passive = true
+        ftp.login(user = "melnik5g_andrey", passwd="DENVER")
+    	ftp.chdir "/files/#{@email}"
+		@files = ftp.nlst('*')
         end
     end
 
-    def refreshDB
-    	ftp = Net::FTP.new('pegas.beget.ru')
-    	ftp.passive = true
-    	ftp.login(user = "melnik5g_andrey", passwd="DENVER")
-    	files = ftp.chdir('/db')
-    	ftp.putbinaryfile(BD_PATH, remotefile = File.basename(BD_PATH), 1024)
-    	ftp.quit()
-    	redirect_to :action => :index
+    def delete_file
+        @user = User.find(session[:user_id])
+        @email = @user[:email]
+        ftp = Net::FTP.new('pegas.beget.ru')
+        ftp.passive = true
+        ftp.login(user = "melnik5g_andrey", passwd="DENVER")
+        ftp.chdir "/files/#{@email}"
+        ftp.delete(params[:name])
+        redirect_to(:back)
     end
 
 end

@@ -1,6 +1,7 @@
 <%= form_for :user, :url => { :action => :create } do |f| %>
 
-
+<%= stylesheet_link_tag    "modern.css" %>
+<%= stylesheet_link_tag    "my.css" %>
 
 <div class="span6" style="margin: 5% auto">
             <%= f.error_messages %>
@@ -9,23 +10,32 @@
                     <h2>E-mail</h2>
                     <div class="span2" id="centered">
                             <div class="input-control-text">
-                                <%= f.text_field :email,:placeholder => "Enter e-mail" %>
+                                <%= f.text_field :email,:placeholder => "Ваша электронная почта" %>
                             </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <br>
-                    <h2>Password</h2>
-                    <div class="span2" id="centered">
+                    <h2>Пароль</h2>
+                    <div class="span4" id="centered">
                             <div class="input-control-text">
-                                <%= f.password_field :password, :placeholder => "Enter password" %>
+                                <%= f.password_field :password, :placeholder => "Введите пароль" %>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h2>Подтвердите пароль</h2>
+                    <div class="span4" id="centered">
+                            <div class="input-control-text">
+                                <%= f.password_field :password_confirmation, :placeholder => "Подтвердите Пароль" %>
                             </div>
                     </div>
                 </div>
 
                 <div class="row" style="margin-top: 15px">
-                    <div class="span2" id="centered">
+                    <div class="span4" id="centered">
                         <br><br>
                         <%= f.submit %>
                     </div>

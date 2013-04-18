@@ -1,6 +1,71 @@
-<% for file in @files %>
+<%= stylesheet_link_tag "bootstrap.css" %>
 
-file name is: <%= file  %>
+<%= render "layouts/menu" %>
 
-<br>
+     <div class="span8" style="margin-right:13%;margin-left:5%"> 
+      <h3>Личный кабинет</h3>
+      <div class="bs-docs-example">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#home" data-toggle="tab">Персональные данные</a></li>
+              <li><a href="#security" data-toggle="tab">Безопасность</a></li>
+              <li><a href="#orders" data-toggle="tab">Заказы</a></li>
+              <li><%= link_to "Выйти", log_out_path %></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade in active" id="home">
+                <div style="margin-left:3%;margin-top:2%" class="span3">
+<%= form_for :user, :url => { :action => :update, :id => @user.id },
+                    :method => :put do |f| %>
+					<label class="control-label" >Имя</label>
+
+                    <br>
+
+                    <label class="control-label" >E-mail</label>
+					<%= f.text_field :email,:value => @user.email, :disabled => :true %>
+                    <br>
+                </div>
+
+                <div style="margin-left:10%;margin-top:2%" class="span3">
+                    <label class="control-label" >Фамилия</label>
+                </div>
+              </div>
 <% end %>
+<div class="tab-pane fade" id="security">
+
+<%= form_for :user, :url => { :action => :update, :id => @user.id },
+                    :method => :put do |f| %>
+                <div style="margin-left:3%;margin-top:2%" class="span3">
+                    <label class="control-label" >Новый пароль</label>
+                    <%= f.password_field :password, :placeholder => "Новый пароль"%>
+                    <br>
+                    <label class="control-label" >Подтвердите пароль</label>
+                    <%= f.password_field :password_confirmation, :placeholder => "Новый пароль"%>
+                    <br>
+                    <%= f.submit "Изменить", :class => "btn btn-success", :style => "float:right;margin-top:10%"  %>
+                </div>               
+              </div>
+<% end %>
+
+
+<div class="tab-pane fade" id="orders">
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>Номер заказа</th>
+    <th>Почта</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>Телефон</th>
+    <th>Тип</th>
+    <th>Оплата</th>
+    <th>Статус</th>
+  </tr>
+
+
+</table>
+
+              </div>
+            </div>
+          </div>
+
+
+    </div>
