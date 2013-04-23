@@ -21,7 +21,7 @@
   	<th></th>
   </tr>
 
-<% if @files != nil %>
+<% if not @files.empty? %>
 <% for file in @files %>
   <% if File.basename(file) != ".." and File.basename(file) != "." %>
 <tr>

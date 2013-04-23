@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	  	@user.destroy
 	  	redirect_to :action => :index
-	  	#redirect_to :action => :refreshDB 
     end
 
     def show
