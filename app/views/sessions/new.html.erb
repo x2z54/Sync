@@ -9,27 +9,27 @@
 
                 <div class="row">
                     <h2>E-mail</h2>
-                    <div class="span2" id="centered">
+                    <div class="span4" id="centered">
                             <div class="input-control-text">
-                                 <%= text_field_tag :email, params[:email],:placeholder => "Enter E-mail" %>
+                                 <%= text_field_tag :email, params[:email],:placeholder => "Ваша электронная почта" %>
                             </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <br>
-                    <h2>Password</h2>
-                    <div class="span2" id="centered">
+                    <h2>Пароль</h2>
+                    <div class="span4" id="centered">
                             <div class="input-control-text">
-                               <%= password_field_tag :password_digest, params[:password_digest],:placeholder => "Enter password" %>
+                               <%= password_field_tag :password_digest, params[:password_digest],:placeholder => "Введите пароль" %>
                             </div>
                     </div>
                 </div>
 
                 <div class="row" style="margin-top: 15px">
-                    <div class="span2" id="centered">
+                    <div class="span4" id="centered">
                         <br><br>
-                         <%= submit_tag "Login"%>
+                         <%= submit_tag "Войти"%>
                     </div>
                 </div>
             </div>

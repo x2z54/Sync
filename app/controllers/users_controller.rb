@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 require 'net/ftp'
 
 
@@ -22,9 +24,9 @@ class UsersController < ApplicationController
         else
     	@user = User.find(session[:user_id])
     	@email = @user[:email]
-        @ftp = Net::FTP.new('pegas.beget.ru')
+        @ftp = Net::FTP.new("fluorine.locum.ru")
         @ftp.passive = true
-        @ftp.login(user = "melnik5g_andrey", passwd="DENVER")
+        @ftp.login(user = "hosting_x2z54", passwd="zI6t73mh")
     	@ftp.chdir "/files/#{@email}"
 		@files = @ftp.nlst('*')
         end
@@ -33,9 +35,9 @@ class UsersController < ApplicationController
     def delete_file
         @user = User.find(session[:user_id])
         @email = @user[:email]
-        ftp = Net::FTP.new('pegas.beget.ru')
-        ftp.passive = true
-        ftp.login(user = "melnik5g_andrey", passwd="DENVER")
+        @ftp = Net::FTP.new("fluorine.locum.ru")
+        @ftp.passive = true
+        @ftp.login(user = "hosting_x2z54", passwd="zI6t73mh")
         ftp.chdir "/files/#{@email}"
         ftp.delete(params[:name])
         redirect_to(:back)

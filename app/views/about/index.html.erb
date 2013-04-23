@@ -1,0 +1,63 @@
+<%= stylesheet_link_tag    "modern.css" %>
+<%= stylesheet_link_tag    "my.css" %>
+<%= javascript_include_tag  "pagecontrol.js" %>
+
+    <div class="page secondary">
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>Sync techology<small>о нас</small></h1>
+                <%= link_to "", {:controller => :welcome} , :class => "back-button big page-back" %>
+            </div>
+        </div>
+        <br>
+        <div class="page-control" data-role="page-control">
+        <!-- Responsive controls -->
+        <span class="menu-pull"></span> 
+        <div class="menu-pull-bar"></div>
+        <!-- Tabs -->
+        <ul>
+            <li class="active"><a href="#frame1">Наш проект</a></li>
+            <li><a href="#frame2">Команда разработчиков</a></li>
+            <li><a href="#frame3">Руководство пользователя</a></li>
+        </ul>
+        <!-- Tabs content -->
+        <div class="frames">
+            <div class="frame active" id="frame1">
+            	<p>
+            	<span class="fg-color-red">Клиент-серверная система синхронизации файлов</span> позволяет хранить свои данные в так называемом “Облачном хранилище” с неограниченным пространством и получать доступ к ним с любого компьютера, на котором есть Интернет.
+				Так же система обеспечивает высокую скорость передачи данных, надежность хранения файлов и их защиты от несанкционированного доступа.
+				</p>
+            </div>
+
+            <div class="frame" id="frame2">
+            	<p>
+            	<strong>Носков Андрей  Геннадьевич</strong> – Главный программист.
+				</p>
+				<p>
+				<strong>Панкратов Владислав Валерьевич</strong> – Разработчик 
+				Web-интерфейса.
+			    </p>
+				<p>
+				<strong>Макаров Игорь Алексеевич</strong> – Дизайнер интерфейса.	
+				</p>
+            </div>
+
+            <div class="frame" id="frame3">
+            	 <ul>
+        			<li>Первым шагом вам надо <%= link_to "Зарегистрироваться", :controller => :registration %></li>
+        			<li>Затем загрузить приложение с нашего сайта</li>
+        			<li>Распакуйте архив</li>
+        			<li>Запустите приложение(папка dist, last.exe)</li>
+        			<li>Введите свои данные, указанные при регистрации</li>
+    			</ul>
+    			<p>Готово! Теперь Вы можете загружать свои файлы на сервер и на свои устройства</p>
+            </div>            
+        </div>
+    </div>
+    <br>
+    <div class="span12">
+    	<%= image_tag "sky.jpg" %>
+    </div>
+
+    </div>
+

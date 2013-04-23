@@ -1,26 +1,39 @@
+
 <%= stylesheet_link_tag "bootstrap.css" %>
+<%= javascript_include_tag 'jquery.js' %>
+<%= javascript_include_tag 'jquery.easing.js' %>
+<%= javascript_include_tag 'jqueryFileTree.js' %>
+<%= stylesheet_link_tag    "jqueryFileTree.css" %>
+
+<script type="text/javascript">
+    $(document).ready( function() {
+        $('#fileTree').fileTree({ root: "<%=@ftp.getdir()%>", script: 'jqueryfiletree/content' }, function(file) {
+            alert(file);
+        });
+    });
+</script>
 
 <%= render "layouts/menu" %>
 
-<div class="span11" style="margin-right:13%;margin-left:4%">
-<table class="table table-bordered table-hover">
+<div id="fileTree" class="demo"></div>
+<div class="span13" style="margin-left:2%;width:50%">
+<table class="table table-bordered">
   <tr>
   	<th>Название</th>
-  	<th>Тип</th>
   	<th></th>
   	<th></th>
   </tr>
 
+
 <% for file in @files %>
+  <% if File.basename(file) != ".." and File.basename(file) != "." %>
 <tr>
- <td><%= file  %></td>
- <td><%= if File.file?(file)
-  else puts "Файл" 
-  end %>
+ <td><%= file.to_s.force_encoding("UTF-8")%></td>
  </td>
  <td><%= link_to "Удалить", :action => :delete_file, :name => file %></td>
  <td><%= link_to "Загрузить", :action => :download_file, :name => file %></td>
 </tr>
+<% end %>
 <br>
 <% end %>
 </table>

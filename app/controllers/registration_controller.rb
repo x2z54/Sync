@@ -13,9 +13,9 @@ class RegistrationController < ApplicationController
 		@user = User.new(params[:user])
 		if @user.save
 		Dir.mkdir "#{Rails.public_path}/Files/#{@user.email}"
-		@ftp = Net::FTP.new('pegas.beget.ru')
+		@ftp = Net::FTP.new("fluorine.locum.ru")
         @ftp.passive = true
-        @ftp.login(user = "melnik5g_andrey", passwd="DENVER")
+        @ftp.login(user = "hosting_x2z54", passwd="zI6t73mh")
         @ftp.mkdir "/files/#{@user.email}"
 		render "_good"
 		else
@@ -24,17 +24,7 @@ class RegistrationController < ApplicationController
 	end
 
 	def download
-		send_file "#{Rails.public_path}/test.zip", :type=>"application/zip"
+		send_file "#{Rails.public_path}/syncapp.zip", :type=>"application/zip"
 	end
-
-	def refreshDB
-    	ftp = Net::FTP.new('pegas.beget.ru')
-    	ftp.passive = true
-    	ftp.login(user = "melnik5g_andrey", passwd="DENVER")
-    	files = ftp.chdir('/db')
-    	ftp.putbinaryfile(BD_PATH, remotefile = File.basename(BD_PATH), 1024)
-    	ftp.quit()
-    	render "_good"
-    end
 
 end
