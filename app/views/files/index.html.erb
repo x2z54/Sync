@@ -5,18 +5,15 @@
 <%= javascript_include_tag 'jqueryFileTree.js' %>
 <%= stylesheet_link_tag    "jqueryFileTree.css" %>
 
-<script type="text/javascript">
-    $(document).ready( function() {
-        $('#fileTree').fileTree({ root: "<%=@ftp.getdir()%>", script: 'jqueryfiletree/content' }, function(file) {
-            alert(file);
-        });
-    });
-</script>
+
 
 <%= render "layouts/menu" %>
 
-<div id="fileTree" class="demo"></div>
+<div>
 <div class="span13" style="margin-left:2%;width:50%">
+    <div class="alert alert-info">
+    <h1>Список файлов</h1>
+  </div>
 <table class="table table-bordered">
   <tr>
   	<th>Название</th>
@@ -24,7 +21,7 @@
   	<th></th>
   </tr>
 
-
+<% if @files != nil %>
 <% for file in @files %>
   <% if File.basename(file) != ".." and File.basename(file) != "." %>
 <tr>
@@ -36,5 +33,7 @@
 <% end %>
 <br>
 <% end %>
+<% end %>
 </table>
+</div>
 </div>

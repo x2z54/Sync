@@ -12,7 +12,9 @@ class FilesController < ApplicationController
     	@email = @user[:email]
         if connect
     	   @ftp.chdir "/files/#{@email}"
-		   @files = @ftp.nlst("*")
+           if @files != nil
+		      @files = @ftp.nlst("*")
+           end
         end
         end
 	end
