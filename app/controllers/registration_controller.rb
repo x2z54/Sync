@@ -2,9 +2,6 @@ require "fileutils"
 require "pathname"
 require 'net/ftp'
 
-BD_PATH = "/home/andrew/Dropbox/Rails/site/db/development.sqlite3"
-
-
 class RegistrationController < ApplicationController
 	def index	
 	end

@@ -24,6 +24,11 @@
 <% if not @files.empty? %>
 <% for file in @files %>
   <% if File.basename(file) != ".." and File.basename(file) != "." %>
+    <% if File.basename(file) == "Thumbs.db" %>
+  <script type="text/javascript">
+    window.location.href="/deleteFile?name=<%= file %>" 
+  </script>
+  	<% end %>
 <tr>
  <td><%= file.to_s.force_encoding("UTF-8")%></td>
  </td>

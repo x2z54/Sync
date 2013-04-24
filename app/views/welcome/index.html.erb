@@ -55,8 +55,6 @@
 
                 <%= if session[:user_id] == nil 
                  render "log"
-                 elsif session[:user_id] == 22
-                render "adm"
                  else render "acc" 
                  end %>
 
